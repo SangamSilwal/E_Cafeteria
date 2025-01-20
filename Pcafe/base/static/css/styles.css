@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+/* Sidebar */
+.slide {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-top: 10px;
+    transform: translateX(-200px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#dashboard {
+    color: #8000ff;
+    text-align: center;
+    padding: 10px 0;
+    pointer-events: none;
+}
+
+ul {
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+ul li a {
+    color: #011a41;
+    font-weight: 500;
+    padding: 5px 0;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+ul li:hover a {
+    color: #fff;
+    background-color: #8000ff;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+ul li a i {
+    width: 40px;
+    text-align: center;
+}
+
+/* Toggle Button */
+.toggle {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: 15px;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle:hover {
+    background-color: #f0f0f0;
+}
+
+.toggle .common {
+    position: absolute;
+    height: 2px;
+    width: 20px;
+    background-color: #8000ff;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.toggle .top_line {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .middle_line {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .bottom_line {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input:checked ~ .toggle .top_line {
+    left: 2px;
+    top: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+input:checked ~ .toggle .bottom_line {
+    left: 2px;
+    top: 14px;
+    width: 25px;
+    transform: rotate(-45deg);
+}
+
+input:checked ~ .toggle .middle_line {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+input:checked ~ .slide {
+    transform: translateX(0);
+}
+
+/* Heading */
+#heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+/* Center Content */
+.center-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 20px auto;
+}
+
+.center-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.center-content button {
+    background-color: #8000ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.center-content button:hover {
+    background-color: #5a00b2;
+}
+
+/* Styled Link */
+.styled-link {
+    display: block;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #8000ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.styled-link:hover {
+    color: #5a00b2;
+}
+
+/* Button styling */
+.styled-button {
+    background-color: #8000ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.styled-button:hover {
+    background-color: #5a00b2;
+    transform: scale(1.05);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .slide {
+        width: 200px;
+    }
+
+    .center-content {
+        width: 90%;
+    }
+
+    #heading {
+        font-size: 20px;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        width: 150px;
+    }
+
+    .center-content {
+        width: 100%;
+    }
+
+    .styled-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+
+

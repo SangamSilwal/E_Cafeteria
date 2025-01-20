@@ -1,0 +1,18 @@
+{% extends "homepage.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/registerRfid.css' %}">
+<div class="rfid-scan-container">
+    <h1>Register RFID Card</h1>
+    <p class="instructions">Please place your RFID card near the scanner and press the button below to scan.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button class="scan-button">Scan Card</button>
+    </form>
+    {% if exist_UUID %}
+        <div class="alert">
+            <h2>UUID already exists!</h2>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

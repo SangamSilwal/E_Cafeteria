@@ -1,0 +1,32 @@
+{% extends "homepage.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tranHistory.css' %}">
+
+<div class="transaction-container">
+    {% for i in tr %}
+    <div class="transaction-card" onclick="toggleDetails(this)">
+        <!-- Transaction info (interactive and clickable) -->
+        <p>
+            <span class="student-name">{{ i.student.name }}</span> ||
+            {% comment %} <span class="transacted-amount">{{ i.transcatedPoints }}</span> || {% endcomment %}
+            <span class="transaction-time">{{ i.time }}</span>
+        </p>
+
+        
+        <div class="transaction-details">
+            <p><strong>Details:</strong> Transfered to Pulchowk Cafeteria</p>
+            <p><strong>Status:</strong> Completed</p>
+            <p><strong>Amount:</strong> Rs. {{i.transcatedPoints}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    function toggleDetails(card) {
+        
+        card.classList.toggle('active');
+    }
+</script>
+{% endblock %}

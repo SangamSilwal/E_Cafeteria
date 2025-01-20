@@ -1,0 +1,47 @@
+
+{% extends "homepage.html" %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+    <h2>Student Registration Form</h2>
+    {% block content %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
+        
+        <label for="roll">Roll Number:</label>
+        <input type="text" id="roll" name="roll" placeholder="Enter your roll number" required><br><br>
+
+     
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required><br><br>
+
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        
+        <label for="points">Points:</label>
+        <input type="text" id="points" name="points" placeholder="Enter your points" required><br><br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+
+        
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
+</body>
+</html>
+

@@ -1,0 +1,87 @@
+/* Center the transaction container */
+.transaction-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+/* Each transaction card style */
+.transaction-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Interactive hover effect */
+.transaction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f1f1f1; /* Subtle background change on hover */
+}
+
+/* Transaction info styles */
+.transaction-card p {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Styling each part of the transaction info */
+.transaction-card p span {
+    font-weight: bold;
+    color: #8000ff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for spans */
+.transaction-card p span:hover {
+    color: #5a00b2;
+}
+
+/* Add a dotted underline when hovering on student name */
+.transaction-card p span:nth-child(1):hover {
+    text-decoration: underline dotted;
+}
+
+/* Highlight the transaction amount */
+.transaction-card p span:nth-child(2):hover {
+    color: #d9534f;
+}
+
+/* Styling the full transaction details (hidden by default) */
+.transaction-details {
+    display: none;
+    font-size: 1rem;
+    color: #555;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+/* Show full details when card is clicked */
+.transaction-card.active .transaction-details {
+    display: block;
+    margin-top: 15px;
+}
+
+/* Add a subtle transition to the transaction details */
+.transaction-details p {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.transaction-card.active .transaction-details p {
+    opacity: 1;
+}

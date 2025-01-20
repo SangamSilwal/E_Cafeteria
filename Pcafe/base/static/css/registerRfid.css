@@ -1,0 +1,78 @@
+/* RFID Scan Page Styling */
+.rfid-scan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    width: 80%;
+    max-width: 400px;
+}
+
+.rfid-scan-container h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #8000ff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rfid-scan-container .instructions {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.scan-button {
+    background-color: #8000ff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.scan-button:hover {
+    background-color: #5a00b2;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.alert {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.alert h2 {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .rfid-scan-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .rfid-scan-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .scan-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}
