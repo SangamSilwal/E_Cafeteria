@@ -155,3 +155,14 @@ def get_student_data_by_uuid(uuid_data):
         print("The student doesnot exists")
         return None
     
+def inspect_profile(request):
+    context = {}
+    if request.method == "POST":
+        uuid_data = getUUID()
+        student_data = get_student_data_by_uuid(uuid_data)
+        if student_data is not None:
+            context['Student'] = student_data
+
+
+    
+    return render(request,"inspect_profile.html",context)

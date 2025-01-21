@@ -1,0 +1,88 @@
+{% extends 'navbar.html' %}
+{% block content %}
+
+<div class="content-container">
+    <h1>Register RFID Card</h1>
+    <p class="instructions">Please place your RFID card near the scanner and press the button below to scan.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="scan-button">Scan Card</button>
+    </form>
+
+    {% if Student %}
+        <div class="student-info">
+            <p>Name: {{ Student.name }}</p>
+            <p>Roll: {{ Student.roll }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+/* Full-screen styling to remove margin/padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
+}
+
+/* Content container style */
+.content-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Light, slightly transparent white */
+    border-radius: 12px;
+    padding: 30px 40px;
+    width: 350px; /* Fixed width for the card */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading and text styling */
+h1 {
+    color: #8000ff;
+    margin-bottom: 15px;
+}
+
+.instructions {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.scan-button {
+    background-color: #8000ff;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.scan-button:hover {
+    background-color: #6600cc;
+    transform: scale(1.1);
+}
+
+/* Student info block */
+.student-info {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(245, 245, 245, 0.8);
+    border-radius: 8px;
+    text-align: left;
+    color: #333;
+}
+
+.student-info p {
+    margin: 5px 0;
+}
+</style>
+
+
+
+{% endblock %}

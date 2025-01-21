@@ -1,45 +1,59 @@
-{% load static %}
-
-<html>
-    <head>
-        <title>Cafeteria Mangement System</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    </head>
-    <body style="background-image: url('{% static 'images/photo.jpeg' %}'); background-size: cover; background-position: center center; background-attachment: fixed;">
-        <label>
-            <input type="checkbox">
-            <div class="toggle">
-                <span class="top_line common"></span>
-                <span class="middle_line common"></span>
-                <span class="bottom_line common"></span>
-            </div>
-            <div class="slide">
-                <h1 id="dashboard">MENU</h1>
-                <ul>
-                    <li><a href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i>Today's Sales </a></li>
-                    <li><a href="inventory.html"><i class="fas fa-boxes"></i>Inventory </a></li>
-                    <li><a href="menu.html"><i class="fas fa-utensils"></i> Food Menu </a></li>
-                    <li><a href="{% url 're_Rf' %}" class="styled-link"><i class="fas fa-user-graduate"></i>Create Student</a></li>
-                    <li><a href="#"><i class="fas fa-cogs"></i>Settings</a></li>
-                </ul>
-            </div>
-        </label>
-        
-
-        {% block content %}
-        <div class = "full-body">
-        <div class="student-body">
-        <div class="center-content">
-        <h1 id="heading">IOE Pulchowk Campus Cafeteria</h1>
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="student-body">
+    <div class="center-content">
+        <p class="instruction-text">Please place your RFID card near the scanner and press the button below to scan.</p>
         <form method="POST">
             {% csrf_token %}
             <button type="submit" class="styled-button">Scan</button>
         </form>
     </div>
-    </div>
-    </div>
-    {% endblock %}
-</html>
+</div>
 
+<style>
+/* Make sure the full screen is covered */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Full viewport centering */
+.student-body {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Full viewport height */
+    background-color: rgba(0, 0, 0, 0.3); /* Slight dark overlay */
+}
+
+/* Style the card container */
+.center-content {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px 30px; /* Padding inside the card */
+    text-align: center; /* Center content inside the card */
+    width: 300px; /* Set fixed width for the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Button styling */
+.styled-button {
+    background-color: #8000ff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.styled-button:hover {
+    background-color: #6600cc;
+    transform: scale(1.1); /* Slight zoom effect */
+}
+</style>
+
+
+{% endblock %}
