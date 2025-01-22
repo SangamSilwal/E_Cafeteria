@@ -1,14 +1,17 @@
 body {
     overflow-x: hidden;
+    box-sizing: border-box;
     
 }
 .sidebar {
     height: 100vh;
-    width: 250px;
+    width:20%;
     position: fixed;
     top: 0;
     left: 0;
-
+    display: none;
+    flex-direction: column;
+    gap:25px;
     background: linear-gradient(45deg, rgba(245, 246, 247, 0.8), #8000ff);
 
     
@@ -16,22 +19,37 @@ body {
     padding: 15px;
     transition: width 0.3s ease-in-out;
 }
-.sidebar:hover {
+
+/* .sidebar:hover {
     width: 300px;
+} */
+.sidebar.show{
+    display: flex !important;
 }
-.sidebar a {
+.sidebar .navbar-links a {
     color: white;
     text-decoration: none;
     display: flex;
+    font-size: 20px;
     align-items: center;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
-.sidebar a:hover {
+/* .sidebar a:hover {
     background-color: #495057;
     transform: translateX(5px);
+} */
+
+.sidebar .navbar-links a:hover{
+    font-weight: 600;
+    font-size: 21px;
+    color: white;
+    padding: 10px;
+    background: none;
+    background-color:tan;
+    border-radius: 20px;
 }
 .sidebar a i {
     margin-right: 10px;
@@ -44,3 +62,36 @@ body {
 .sidebar:hover ~ .content {
     margin-left: 300px;
 }
+
+.navbar-links{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    
+}
+.sidebar-title {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ .burger-btn{
+    font-size: 35px;
+    color: #3628ef;
+    padding: 10px;
+    background: none;
+}
+.burger-btn-open{
+    position: absolute;
+    left:10px;
+    top:10px;
+
+}
+.sidebar-title h2{
+    font-size: 30px;
+    font-weight: 600;
+    border-bottom: 2px solid;
+    text-shadow: 1px 2px solid rgba(0,0,0,0.2);
+}
+

@@ -7,6 +7,10 @@ from .models import UUIDStudent,StudentData,TranscationHistory,AnalysisTransacti
 from django.shortcuts import get_object_or_404
 import serial
 import time
+import plotly.express as px
+from datetime import datetime,timedelta
+
+
 
 def getUUID():
     arduino_port = '/dev/ttyACM0'
@@ -162,7 +166,40 @@ def inspect_profile(request):
         student_data = get_student_data_by_uuid(uuid_data)
         if student_data is not None:
             context['Student'] = student_data
-
-
-    
     return render(request,"inspect_profile.html",context)
+
+
+def inspect_sales(request):
+    context = {}
+    date_list = []
+    if request.method == "POST":
+        startdate = request.POST.get("start_date")
+        enddate = request.POST.get("end_date")
+        start_date_obj = datetime.strptime(startdate, "%Y-%m-%d")  
+        end_date_obj = datetime.strptime(enddate, "%Y-%m-%d")     
+        date_list = []
+        current_date = start_date_obj
+        while current_date <= end_date_obj:
+            date_list.append(current_date.strftime("%B-%d-%Y"))
+            current_date += timedelta(days=1)  
+    time_transaction = TranscationHistory.objects.values('time')
+    points_transaction = TranscationHistory.objects.values('transcatedPoints')
+    x = []
+    y = []
+    count = 0
+    for i, transaction in enumerate(time_transaction):
+        if(transaction['time'].strftime("%B-%d-%Y") in date_list):
+            count += 1
+            month_day = f"{transaction['time'].strftime("%B")}-{transaction['time'].strftime("%d")}"  
+            x.append(month_day) 
+            y.append(points_transaction[i]['transcatedPoints'])  
+    if(count>0):
+        fig = px.bar(x=x, y=y, labels={"x": "Month-Day", "y": "Transcated Points"})
+        fig.update_layout(title_text="Sales Inspection Chart")
+        chart = fig.to_html()
+        context["graph"] = chart
+    return render(request, "inspect_sale.html", context)
+
+
+
+

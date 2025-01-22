@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Date Range</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Font Awesome -->
+
+  <style>
+    body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom right, #87ceeb, #9c00c3);
+  color: #fff;
+}
+
+.form-container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 80%; /* Increased width for responsiveness */
+  max-width: 800px; /* Set a max-width for larger screens */
+  box-sizing: border-box; /* Ensure padding doesn't exceed the width */
+}
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .form-container label {
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background: #4682b4;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .form-container button:hover {
+      background: #5a9bd8;
+    }
+    .a{
+        color:black;
+    }
+  </style>
+</head>
+<body>
+<a href='{% url "homePage" %}' class="homepage-link">
+        <i class="fas fa-arrow-left"></i> Go back to homepage
+    </a>
+  <div class="form-container">
+    <h2>Enter Date Range</h2>
+    <small> <a href='{% url "homePage" %}' class="homepage-link">
+        <i class="fas fa-arrow-left"></i> Go back to homepage
+    </a></small>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="start_date">Start Date:</label>
+      <input type="date" id="start_date" name="start_date" required>
+      <label for="end_date">End Date:</label>
+      <input type="date" id="end_date" name="end_date" required> 
+      <button type="submit">Submit</button>
+    </form>
+    <div class="graph-container">
+        {{ graph|safe }}
+    </div>
+  </div>
+</body>
+</html>
